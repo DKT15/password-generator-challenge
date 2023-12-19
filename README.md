@@ -7,7 +7,7 @@ I have created my project to demonstrate my advanced knowledge of Javascript. I 
 
 ## Installation
 
-Using the live link will enable you to use this application. Right-click and then select 'inspect.' Afterwards, go to the 'console' tab. This will show you what I have printed on the console.
+Using the live link will enable you to use this application. Right-click and then select 'inspect.' Afterwards, go to the 'console' tab. This will show you what I have printed on the console. A link to the website: https://dkt15.github.io/password-generator-challenge/
 
 ## Usage
 
