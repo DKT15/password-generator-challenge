@@ -95,19 +95,26 @@ function getPasswordOptions() {
   );
 
   pwLength = parseInt(pwLength); //this converts the password length to accept an integer.
-  console.log(pwLength);
-  if (pwLength < 8 || pwLength > 128 || isNaN(pwLength)) { // if the password length is less than 8, more than 128 or is a NaN. The alert will display the message below and will not continue  through the function.
+
+  if (pwLength < 8 || pwLength > 128 || isNaN(pwLength)) {
+    // if the password length is less than 8, more than 128 or is a NaN. The alert will display the message below and will not continue  through the function.
     alert("password length is not correct");
     return;
   }
 
   // list of confirms
   var isNumeric = confirm("Click OK to confirm including numeric characters");
-  var isSpecialCharacters = confirm("Click OK to confirm including special characters");
-  var isUppercase = confirm("Click OK to confirm including lowercase characters");
-  var isLowercase = confirm("Click OK to confirm including uppercase characters");
+  var isSpecialCharacters = confirm(
+    "Click OK to confirm including special characters"
+  );
+  var isUppercase = confirm(
+    "Click OK to confirm including lowercase characters"
+  );
+  var isLowercase = confirm(
+    "Click OK to confirm including uppercase characters"
+  );
 
-  //the passwords lenght along with the characters.
+  //the passwords length along with the characters are returned inside of this function passwordOptions.
   return {
     pwLength: pwLength,
     isNumeric: isNumeric,
@@ -119,33 +126,44 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  var randomCharacters = arr[Math.floor(Math.random() * arr.length)]; // this picks out a random element from the passwordOptions array.
-  console.log(randomCharacters);
+  var randomCharacter = arr[Math.floor(Math.random() * arr.length)]; // this picks out a random element from the passwordOptions array.
+  return randomCharacter; //randomCharacter has been assigned the random arrays random character. The randomCharacter is then returned, so it can be activated.
 }
 
 // Function to generate password with user input
 function generatePassword() {
-  var pwOptions = getPasswordOptions();
-  var finalArr = [];
+  var pwOptions = getPasswordOptions(); //PwOptions takes the contents of the getPasswordOptions function its been made to equal.
+  var finalArr = []; //Created a final array variable.
+  var randomPw = ""; //Created a randomPw varable.
 
-  // checks the users answer and then pushes the last characters onto the final array. (Ran out of time to finish.)
-  if (pwOptions.isNumeric === true && pwOptions.isSpecialCharacters === true && pwOptions.isUppercase === true && pwOptions.isLowercase == true && finalArr !== '') {
-    finalArr.push(...numericCharacters, specialCharacters, upperCasedCharacters, lowerCasedCharacters);
+  // checks the users answer and then pushes the last characters onto the final array.
+  if (pwOptions.isNumeric === true) {
+    finalArr.push(...numericCharacters);
   }
 
-  // returne if the answer is no.
-  else {
-    alert("You haven't met the requirments.")
-    return
+  if (pwOptions.isSpecialCharacters === true) {
+    finalArr.push(...specialCharacters);
   }
 
-  for (var i = 0; i < pwOptions.length; i++) {
-    getRandom(finalArr); // call this in a for loop
-    console.log(finalArr);
+  if (pwOptions.isUppercase === true) {
+    finalArr.push(...upperCasedCharacters);
   }
 
+  if (pwOptions.isLowercase == true) {
+    finalArr.push(...lowerCasedCharacters);
   }
-  
+
+  if (finalArr.length === 0) {
+    alert("choose one type of character.");
+  }
+
+  for (var i = 0; i < pwOptions.pwLength; i++) {
+    //This loops over the pwoptions password length. We get access to this variable from the getPasswordOptions function.
+    randomPw = randomPw + getRandom(finalArr); //Random password is concatinated here and it is and it takes the getRandom function that generates the random password and then it takes the finalArray as an input.
+  }
+
+  return randomPw; //random password is then returned so it can be accessed.
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -160,6 +178,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
