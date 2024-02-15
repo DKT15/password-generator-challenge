@@ -30,7 +30,7 @@ Right-click and then select 'inspect.' Afterwards, go to the 'console' tab to se
 
 ## Deployment
 
-You can access the website with this link.(https://dkt15.github.io/password-generator-challenge/)
+You can access the website with this [link](https://dkt15.github.io/password-generator-challenge/)
 
 ## Contributing
 
