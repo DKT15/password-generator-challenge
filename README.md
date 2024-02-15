@@ -46,4 +46,9 @@ If you would like to contribute to this project, please follow these steps:
 
 ## License
 
+<<<<<<< HEAD
 This project is licensed under the MIT License.
+=======
+Please refer to the license in the repo.
+
+> > > > > > > d7afe01e84f38deae872445a5b9176476e4b1431
